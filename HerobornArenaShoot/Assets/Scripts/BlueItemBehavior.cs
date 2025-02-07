@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class BlueItemBehavior : MonoBehaviour
 {
+    public GameBehavior gameManager;
+    void Start()
+    {
+        // 2                 
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameBehavior>();
+     }
     // 1
     void OnCollisionEnter(Collision collision)
     {
@@ -14,7 +20,8 @@ public class BlueItemBehavior : MonoBehaviour
             Destroy(this.transform.parent.gameObject);
 
             // 4
-            Debug.Log("Airlock Pressurized!");
+            Debug.Log("Enemy detection radius halved!");
+            gameManager.Items += 1;
         }
     }
 }

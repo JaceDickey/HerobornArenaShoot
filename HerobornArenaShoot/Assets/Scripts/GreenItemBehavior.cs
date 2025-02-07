@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GreenItemBehavior : MonoBehaviour
 {
+    public GameBehavior gameManager;
+    void Start()
+    {
+        // 2                 
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameBehavior>();
+     }
     // 1
     void OnCollisionEnter(Collision collision)
     {
@@ -14,7 +20,8 @@ public class GreenItemBehavior : MonoBehaviour
             Destroy(this.transform.parent.gameObject);
 
             // 4
-            Debug.Log("Life Support Systems Activated!");
+            Debug.Log("Jump height doubled!");
+            gameManager.Items += 1;
         }
     }
 }
